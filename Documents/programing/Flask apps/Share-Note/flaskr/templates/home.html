@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="notes-wrap">
+    <div class="title-wrap">
+        <h1 class='notes-title'>library</h1>
+        <h3 class="add-note" >
+            <a href="/up">+ノートを追加</a>
+        </h3>
+        <a class="add-note2">+</a>
+    </div>
+    <div class="notes">
+    {% for note in notes %}
+        <ul class="note">
+            <li>
+                <img class="note-photo" src="../static/image/{{ note.filename }}">
+
+            </li>
+            {% if note.user_id == current_user.id %}
+            <li class="note-name-wrap">
+                <div class="note-name name-edit">{{ note.title }}</div> 
+                <button class="delete" value='{{ note.id }}'>
+                    消
+                </button>
+            </li>
+            <li class="note-data data-edit" value="{{ note.id }}">
+                <a>{{ note.data }}</a>
+            </li>
+            {% else %}
+            <li class="note-name-wrap">
+                <div class="note-name">{{ note.title }}</div>   
+            </li>
+            <li class="note-data" value="{{ note.id }}">
+                <a>{{ note.data }}</a>
+            </li>
+            {% endif %}      
+            <li class="author">
+                <div>さく：</div>
+                <div>{{ note.author }}</div>
+            </li>
+        </ul>
+    {% endfor %}
+
+    
+    
+    </div>    
+    
+
+</div>     
+
+   
+{% endblock %}

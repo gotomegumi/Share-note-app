@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Upload{% endblock %}
+{% block content %}
+<div class="up-wrap">
+    <form method="POST" action="/up" enctype="multipart/form-data">
+        <ul>
+            <li class="img">
+                <label>画像</label>
+            </li>
+            <li>
+                <input class="image-up" type="file" name="image">
+            </li>
+            <li class="title">
+                <label>タイトル</label>
+            </li>
+            <li>
+                <input class="title-up" name="title" type="text"></li>
+            <li class="content">
+                <label>内容</label>
+            </li>
+            <li>
+                <textarea class="content-up" type="text" name="data"></textarea>
+            </li>
+            <li>
+                <input class="up-btn" type="submit" value="＋保存!">
+            </li>
+        </ul>    
+    </form>
+    <h3><a class='goto' href="/">Libraryを見る</a></h3>
+</div>
+{% endblock %}

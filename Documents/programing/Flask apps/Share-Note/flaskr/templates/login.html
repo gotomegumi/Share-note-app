@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Upload{% endblock %}
+{% block content %}
+<div class="login-wrap">
+    <form method="POST">
+        <ul>
+            <li>
+                <div>メール</div>
+                <input class="email" name="email" type="text">
+            </li>
+            <li>
+                <div>パスワード</div>
+                <input class="password" name="password" type="text" >
+            </li>
+            <li>
+                <input type="submit" value="登録" class="btn">
+            </li>
+        
+           
+        </ul>
+    </form>
+
+    <div>アカウントをお持ちでない場合は登録画面へ</div>
+    <div>
+        <a class="to-signup" href="/signup">登録</a>
+    </div>
+</div>
+
+{% endblock %}

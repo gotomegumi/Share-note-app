@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}signup{% endblock %}
+{% block content %}
+<div class="login-wrap">
+    <form method="post">
+        <ul>
+            <li>
+                <div>name</div>
+                <input class="name" name="name" type="text">
+            </li>
+            <li>
+                <div>e-mail</div>
+                <input class="email" name="email" type="text" >
+            </li>
+            <li>
+                <div>password</div>
+                <input class="password1" name="password1" type="text" >
+            </li>
+            <li>
+                <div>confirm password</div>
+                <input class="password2" name="password2" type="text" >
+            </li>
+            <li>
+                <input type="submit" value="登録" class="btn">
+            </li>
+        </ul>
+    </form>
+</div>
+
+{% endblock %}

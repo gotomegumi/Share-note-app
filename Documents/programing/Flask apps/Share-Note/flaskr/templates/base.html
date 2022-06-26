@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="/static/css/style.css">
+        <link rel="stylesheet" href="/static/css/style_home.css">
+        <link rel="stylesheet" href="/static/css/style_update.css">
+        <link rel="stylesheet" href="/static/css/style_up.css">
+        <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js'></script>
+        <title>
+            {% block title %}Home{% endblock %}
+        </title>
+    </head>
+    <body>
+        <header>
+            <div class="header-wrap">
+                <a href="/" class="header-logo">
+                   Kuzira 
+                </a>
+                <nav class="second">
+                    <ul>
+                        <li>
+                            <a href="/">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Search</a>    
+                        </li>
+                        {% if user.is_authenticated %}
+                        <li>
+                            <a href="/up">+Add note!</a>
+                        </li>
+                        <li>
+                            <a href="/logout">Logout</a>
+                        </li>
+                        {% else %}
+                        <li>
+                            <a href="/login">Login</a>
+                        </li>
+                        <li>
+                            <a href="/signup">Signup</a>    
+                        </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+                
+                <div class="humbarger-menu">
+                    <input class="check-box" type="checkbox" id="menu-btn-check">
+                    <label for="menu-btn-check" href="#" class="menu-btn">
+                        <span></span>
+                    </label>
+                    <nav class="site-list">
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="#">Search</a></li>
+                            <li><a href="/up">+Add note!</a></li>
+                            <li><a href="#">About</a></li>
+                        </ul>
+                    </nav>
+                    <div class="back"></div>
+                    
+
+                </div>
+
+            </div>
+        </header> 
+
+        
+
+        
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class=flashes>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        <div class="content-wrap">
+            {% block content %}{% endblock %}
+        </div>   
+        
+        
+        <div id="cover"></div>
+
+        <div id="confirm-modal"> 
+            <div class="confirm-question">本当に消去しますか？</div>
+            <form class="send-delete" method="POST">
+                <input type="hidden" name="id" id="id">    
+            </form>  
+            <button type="button" class="confirm-ok" id="yes">はい</button>
+            <div class="confirm-cancel"><a >キャンセル</a></div>
+        </div>
+
+        <div id="update-modal" >
+            <form action="/update" method="post">
+                <div>
+                    <ul class="update-list">
+                        <li><p class="update-text">投稿を編集する</p></li>
+                        <li><input type="text" name="title" id="title-update"></li>
+                        <li><textarea name="data" id="data-update"></textarea></li>
+                        <li><input type="hidden" name="id" id="id2"></li>
+                    </ul>
+                    
+                </div>
+                <button class="update-btn">変更</button>
+            </form>
+        </div>
+    
+        <script src="/static/script.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/js/modaal.min.js"></script>
+    </body>
+
+</html>
